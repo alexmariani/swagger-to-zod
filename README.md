@@ -2,7 +2,7 @@
 
 Genera **tipi TypeScript + schemi Zod** da uno spec **OpenAPI 3.x / Swagger** per validazione client (React Hook Form), allineato ai DTO C#/.NET.
 
-> Pensato per: spec Backend → DTO C# (openapi-generator) → Zod TS lato client, saltando la doppia manutenzione.
+> Pensato per: spec Backend → (openapi-generator) → Zod TS lato client, saltando la doppia manutenzione.
 
 ## Uso
 
