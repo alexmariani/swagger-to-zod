@@ -1,0 +1,88 @@
+{
+  "openapi": "3.0.3",
+  "info": { "title": "Example Swagger-to-Zod DEMO", "version": "1.0.0" },
+  "paths": {
+    "/users": {
+      "get": {
+        "summary": "List users",
+        "responses": { "200": { "description": "ok" } }
+      }
+    }
+  },
+  "components": {
+    "schemas": {
+      "Role": {
+        "type": "string",
+        "enum": ["ADMIN", "MANAGER", "USER"]
+      },
+      "Address": {
+        "type": "object",
+        "properties": {
+          "street": { "type": "string" },
+          "city": { "type": "string", "minLength": 2, "maxLength": 64 },
+          "zip": { "type": "string", "pattern": "^[0-9]{5}$" }
+        },
+        "required": ["street", "city"]
+      },
+      "UserStatus": {
+        "type": "string",
+        "enum": ["ACTIVE", "SUSPENDED", "DELETED"]
+      },
+      "User": {
+        "type": "object",
+        "properties": {
+          "id": { "type": "string", "format": "uuid" },
+          "email": { "type": "string", "format": "email" },
+          "role": { "$ref": "#/components/schemas/Role" },
+          "status": { "$ref": "#/components/schemas/UserStatus" },
+          "profile": {
+            "type": "object",
+            "properties": {
+              "firstName": { "type": "string" },
+              "lastName": { "type": "string" },
+              "birthDate": { "type": "string", "format": "date-time" }
+            },
+            "required": ["firstName"]
+          },
+          "tags": { "type": "array", "items": { "type": "string" } },
+          "scores": {
+            "type": "array",
+            "items": { "type": "number", "minimum": 0, "maximum": 100 }
+          },
+          "address": { "$ref": "#/components/schemas/Address" },
+          "nickname": { "type": "string", "nullable": true },
+          "age": { "type": "integer", "minimum": 18 },
+          "bio": { "type": "string", "description": "free text" }
+        },
+        "required": ["id", "email", "role", "status", "profile", "tags"]
+      },
+      "CreateUserRequest": {
+        "type": "object",
+        "properties": {
+          "email": { "type": "string", "format": "email" },
+          "password": { "type": "string", "minLength": 8, "maxLength": 128 },
+          "role": { "$ref": "#/components/schemas/Role" }
+        },
+        "required": ["email", "password", "role"]
+      },
+      "Prenotazione": {
+        "type": "object",
+        "properties": {
+          "cliente": { "type": "string" },
+          "dataInizio": { "type": "string", "format": "date-time" },
+          "dataFine": { "type": "string", "format": "date-time" },
+          "posti": { "type": "integer", "minimum": 1, "maximum": 10 }
+        },
+        "required": ["cliente", "dataInizio", "dataFine", "posti"],
+        "x-validate": [
+          {
+            "field": "dataFine",
+            "op": "gt",
+            "ref": "dataInizio",
+            "message": "La data di fine deve essere successiva alla data di inizio"
+          }
+        ]
+      }
+    }
+  }
+}

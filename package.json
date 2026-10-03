@@ -1,0 +1,25 @@
+{
+  "name": "swagger-to-zod",
+  "version": "0.1.0",
+  "private": true,
+  "description": "Genera tipi TS + schemi Zod da uno spec OpenAPI 3.x / DTO Swagger per validazione client (React Hook Form).",
+  "type": "module",
+  "bin": {
+    "swagger-to-zod": "dist/cli.js"
+  },
+  "scripts": {
+    "generate": "tsx src/cli.ts",
+    "build": "tsc -p tsconfig.json",
+    "check": "tsc --noEmit"
+  },
+  "dependencies": {
+    "js-yaml": "^4.1.0",
+    "tsx": "^4.19.2",
+    "zod": "^3.24.1"
+  },
+  "devDependencies": {
+    "@types/js-yaml": "^4.0.9",
+    "@types/node": "^22.10.0",
+    "typescript": "^5.7.2"
+  }
+}

@@ -1,0 +1,8 @@
+node_modules/
+dist/
+*.tsbuildinfo
+tsc_log.txt
+build_ref.txt
+build_rc.txt
+build_pwd.txt
+examples/out/
