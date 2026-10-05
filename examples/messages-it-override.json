@@ -1,0 +1,8 @@
+{
+  "required": "Obbligatorio: compila questo campo",
+  "email": "Email non valida, correggila!",
+  "uuid": "ID non valido",
+  "minLength": "Minimo {n} caratteri per favore",
+  "maxLength": "Massimo {n} caratteri",
+  "custom": "Regola {op} non rispettata tra {f} e {r}"
+}

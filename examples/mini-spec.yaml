@@ -1,0 +1,17 @@
+openapi: 3.0.3
+info:
+  title: Mini
+  version: 1.0.0
+paths: {}
+components:
+  schemas:
+    Range:
+      type: object
+      properties:
+        min: { type: integer }
+        max: { type: integer }
+      required: [min, max]
+      x-validate:
+        - field: max
+          op: gt
+          ref: min

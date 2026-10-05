@@ -12,7 +12,7 @@
  *  - pattern -> .regex() ; numerici con min/max
  */
 
-import { getMessages, type Messages } from './messages.js';
+import { getMessages, type Messages, type MessageTemplates } from './messages.js';
 
 export type ParseResult = {
   types: string;
@@ -26,9 +26,9 @@ let _indent = 0;
 let _msgs: Messages = getMessages();
 const pad = () => '  '.repeat(_indent);
 
-export function generate(spec: any, locale?: string): ParseResult {
+export function generate(spec: any, locale?: string, override?: Partial<MessageTemplates>): ParseResult {
   _indent = 0;
-  _msgs = getMessages(locale);
+  _msgs = getMessages(locale, override);
   const schemas = spec?.components?.schemas ?? {};
   const names = Object.keys(schemas);
   if (names.length === 0) {
