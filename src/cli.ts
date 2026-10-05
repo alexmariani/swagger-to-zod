@@ -1,3 +1,4 @@
+#!/usr/bin/env node
 import { readFile, mkdir, writeFile } from 'node:fs/promises';
 import { resolve as resolvePath, dirname } from 'node:path';
 import { loadSpec } from './load-spec.js';

@@ -1,6 +1,6 @@
 {
   "name": "swagger-to-zod-gen",
-  "version": "0.1.1",
+  "version": "0.1.2",
   "private": false,
   "description": "Genera tipi TypeScript + schemi Zod da uno spec OpenAPI 3.x / Swagger (file o URL) per validazione React Hook Form. Messaggi errore personalizzabili e validazioni cross-field (x-validate).",
   "type": "module",
