@@ -1,25 +1,43 @@
 {
-  "name": "swagger-to-zod",
+  "name": "swagger-to-zod-gen",
   "version": "0.1.0",
-  "private": true,
-  "description": "Genera tipi TS + schemi Zod da uno spec OpenAPI 3.x / DTO Swagger per validazione client (React Hook Form).",
+  "private": false,
+  "description": "Genera tipi TypeScript + schemi Zod da uno spec OpenAPI 3.x / Swagger (file o URL) per validazione React Hook Form. Messaggi errore personalizzabili e validazioni cross-field (x-validate).",
   "type": "module",
-  "bin": {
-    "swagger-to-zod": "dist/cli.js"
+  "main": "dist/cli.js",
+  "exports": {
+    ".": {
+      "import": "./dist/index.js",
+      "types": "./dist/index.d.ts"
+    },
+    "./cli": "./dist/cli.js",
+    "./package.json": "./package.json"
   },
+  "files": [
+    "dist",
+    "README.md"
+  ],
+  "bin": {
+    "swagger-to-zod-gen": "dist/cli.js"
+  },
+  "keywords": ["openapi", "swagger", "zod", "react-hook-form", "typescript", "validation"],
+  "license": "MIT",
   "scripts": {
     "generate": "tsx src/cli.ts",
     "build": "tsc -p tsconfig.json",
     "check": "tsc --noEmit"
   },
+  "peerDependencies": {
+    "zod": ">=3.20.0"
+  },
   "dependencies": {
-    "js-yaml": "^4.1.0",
-    "tsx": "^4.19.2",
-    "zod": "^3.24.1"
+    "js-yaml": "^4.1.0"
   },
   "devDependencies": {
     "@types/js-yaml": "^4.0.9",
     "@types/node": "^22.10.0",
-    "typescript": "^5.7.2"
+    "tsx": "^4.19.2",
+    "typescript": "^5.7.2",
+    "zod": "^3.24.1"
   }
 }
